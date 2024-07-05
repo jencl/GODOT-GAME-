@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://4g5bs8nx2aub"]
+
+[ext_resource type="Script" path="res://scripts/juego.gd" id="1_po2jl"]
+[ext_resource type="PackedScene" uid="uid://cqx3ph78o84rj" path="res://escenas/character_body_2d.tscn" id="1_u3oyf"]
+[ext_resource type="Texture2D" uid="uid://da0okk0ahqa32" path="res://escenas/Mondstadt Background Wallpaper/Mondstadt Background Wallpaper/windrise-background.png" id="1_v18hs"]
+[ext_resource type="PackedScene" uid="uid://b2h3rxfdk8slw" path="res://escenas/enemy.tscn" id="4_pr2mb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06b7t"]
+size = Vector2(620, 5)
+
+[node name="juego" type="Node"]
+script = ExtResource("1_po2jl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Windrise-background" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(305, 188)
+scale = Vector2(0.306641, 0.511719)
+texture = ExtResource("1_v18hs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(309, 377.5)
+shape = SubResource("RectangleShape2D_06b7t")
+
+[node name="yoXD2" parent="." instance=ExtResource("1_u3oyf")]
+position = Vector2(316, 343)
+
+[node name="enemy" parent="." instance=ExtResource("4_pr2mb")]
+position = Vector2(57, 343)
+scale = Vector2(3, 3)
