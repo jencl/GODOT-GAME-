@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnpvvr0u3pxxf"
+path="res://.godot/imported/Música Inspirada En Caricaturas Antiguas.mp3-0cc56c245d729829a2acb0784edd31cc.mp3str"
+
+[deps]
+
+source_file="res://Sonidos/Música Inspirada En Caricaturas Antiguas.mp3"
+dest_files=["res://.godot/imported/Música Inspirada En Caricaturas Antiguas.mp3-0cc56c245d729829a2acb0784edd31cc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

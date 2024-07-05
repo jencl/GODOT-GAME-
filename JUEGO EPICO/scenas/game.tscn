@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=3 uid="uid://57ey8wg06bt7"]
+
+[ext_resource type="Texture2D" uid="uid://cr2bdrbjtkk4k" path="res://Battleground3/Battleground3.png" id="1_hpm4q"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_yrno5"]
+[ext_resource type="PackedScene" uid="uid://j7cnysrwhoes" path="res://scenas/player.tscn" id="2_agou2"]
+[ext_resource type="PackedScene" uid="uid://cqv1j87iccwhw" path="res://scenas/spawner.tscn" id="3_rust4"]
+[ext_resource type="Script" path="res://scripts/DeathScreen.gd" id="5_d6gf6"]
+[ext_resource type="AudioStream" uid="uid://cnpvvr0u3pxxf" path="res://Sonidos/Música Inspirada En Caricaturas Antiguas.mp3" id="6_yofut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rej8k"]
+size = Vector2(1162, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnphi"]
+size = Vector2(44, 661)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x51c3"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_45c6n"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_e046j"]
+font_size = 35
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_yrno5")
+
+[node name="fondo game" type="Sprite2D" parent="."]
+position = Vector2(579.5, 331)
+scale = Vector2(0.600521, 0.611111)
+texture = ExtResource("1_hpm4q")
+
+[node name="player" parent="." instance=ExtResource("2_agou2")]
+position = Vector2(405, 216)
+
+[node name="cajas" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D"]
+position = Vector2(577, 589)
+shape = SubResource("RectangleShape2D_rej8k")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D4"]
+position = Vector2(573, -60)
+shape = SubResource("RectangleShape2D_rej8k")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D2"]
+position = Vector2(-18, 328)
+shape = SubResource("RectangleShape2D_dnphi")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D3"]
+position = Vector2(1171, 324)
+shape = SubResource("RectangleShape2D_dnphi")
+
+[node name="score" type="Label" parent="."]
+offset_left = 575.0
+offset_top = 27.0
+offset_right = 645.0
+offset_bottom = 81.0
+text = "0"
+label_settings = SubResource("LabelSettings_x51c3")
+
+[node name="DeathScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("5_d6gf6")
+
+[node name="MsgLabel" type="Label" parent="DeathScreen"]
+offset_left = 432.0
+offset_top = 159.0
+offset_right = 732.0
+offset_bottom = 228.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_45c6n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathScreen"]
+offset_left = 517.0
+offset_top = 231.0
+offset_right = 643.0
+offset_bottom = 280.0
+
+[node name="Label" type="Label" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_e046j")
+
+[node name="FinalScore" type="Label" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e046j")
+
+[node name="Reinicio" type="Button" parent="DeathScreen"]
+offset_left = 378.0
+offset_top = 294.0
+offset_right = 505.0
+offset_bottom = 347.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "REINICIAR"
+
+[node name="Salir" type="Button" parent="DeathScreen"]
+offset_left = 651.0
+offset_top = 295.0
+offset_right = 778.0
+offset_bottom = 348.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "SALIR"
+
+[node name="spawner" parent="." instance=ExtResource("3_rust4")]
+position = Vector2(1045, 131)
+
+[node name="spawner2" parent="." instance=ExtResource("3_rust4")]
+position = Vector2(888, 136)
+
+[node name="spawner3" parent="." instance=ExtResource("3_rust4")]
+position = Vector2(746, 139)
+
+[node name="spawner4" parent="." instance=ExtResource("3_rust4")]
+position = Vector2(568, 138)
+
+[node name="spawner5" parent="." instance=ExtResource("3_rust4")]
+position = Vector2(368, 138)
+
+[node name="spawner6" parent="." instance=ExtResource("3_rust4")]
+position = Vector2(175, 141)
+
+[node name="juegoSonido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_yofut")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="pressed" from="DeathScreen/Reinicio" to="DeathScreen" method="_on_reinicio_pressed"]
+[connection signal="pressed" from="DeathScreen/Salir" to="DeathScreen" method="_on_salir_pressed"]

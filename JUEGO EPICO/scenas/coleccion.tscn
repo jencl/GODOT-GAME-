@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwpg2txp3pf0v"]
+
+[ext_resource type="Script" path="res://scripts/coleccion.gd" id="1_eda33"]
+[ext_resource type="Texture2D" uid="uid://dy6cnuyqv25xd" path="res://assets/estrellita_donde_estas-removebg-preview.png" id="1_oi6on"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owy6b"]
+size = Vector2(77.75, 80.75)
+
+[node name="Coleccion" type="Area2D"]
+position = Vector2(9, 12)
+script = ExtResource("1_eda33")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_oi6on")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.875, 1.625)
+shape = SubResource("RectangleShape2D_owy6b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
