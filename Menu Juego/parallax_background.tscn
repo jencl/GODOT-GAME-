@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmhirg2rksnb3"]
+
+[ext_resource type="Texture2D" uid="uid://b5s7hrmggvlwd" path="res://julian-gariba-test.jpg" id="1_s2u2q"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(575, 317.5)
+scale = Vector2(0.901563, 0.881944)
+texture = ExtResource("1_s2u2q")

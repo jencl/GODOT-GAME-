@@ -1,0 +1,60 @@
+[gd_scene load_steps=16 format=3 uid="uid://byho721am3g0b"]
+
+[ext_resource type="Script" path="res://scripts/checkponit.gd" id="1_fa62n"]
+[ext_resource type="Texture2D" uid="uid://dobmq42kfyqy8" path="res://checkpoint/Spinning-Floppy-Disk1.png" id="2_gg6qr"]
+[ext_resource type="Texture2D" uid="uid://bjaapmt74uto6" path="res://checkpoint/Spinning-Floppy-Disk2.png" id="3_2fn0k"]
+[ext_resource type="Texture2D" uid="uid://cy3bk5kh1j67b" path="res://checkpoint/Spinning-Floppy-Disk3.png" id="4_rb1lb"]
+[ext_resource type="Texture2D" uid="uid://wpr1c6t4pddu" path="res://checkpoint/Spinning-Floppy-Disk4.png" id="5_xgifg"]
+[ext_resource type="Texture2D" uid="uid://dpg3y8y371edc" path="res://checkpoint/Spinning-Floppy-Disk5.png" id="6_udfu6"]
+[ext_resource type="Texture2D" uid="uid://dkrqdgqj1uyon" path="res://checkpoint/Spinning-Floppy-Disk6.png" id="7_kqk75"]
+[ext_resource type="Texture2D" uid="uid://bpqb2m5ieirdj" path="res://checkpoint/Spinning-Floppy-Disk7.png" id="8_3bynf"]
+[ext_resource type="Texture2D" uid="uid://ct047txbqpad2" path="res://checkpoint/Spinning-Floppy-Disk8.png" id="9_bpd75"]
+[ext_resource type="Texture2D" uid="uid://c3ppcxg64d1ix" path="res://checkpoint/Spinning-Floppy-Disk9.png" id="10_lqdls"]
+[ext_resource type="Texture2D" uid="uid://b8ye05ekdytlj" path="res://checkpoint/Spinning-Floppy-Disk10.png" id="11_43072"]
+[ext_resource type="Texture2D" uid="uid://d3bfpvi4ibkbp" path="res://checkpoint/Spinning-Floppy-Disk11.png" id="12_pu5cq"]
+
+[sub_resource type="Animation" id="Animation_g53gr"]
+resource_name = "activate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_gg6qr"), ExtResource("3_2fn0k"), ExtResource("4_rb1lb"), ExtResource("5_xgifg"), ExtResource("6_udfu6"), ExtResource("7_kqk75"), ExtResource("8_3bynf"), ExtResource("9_bpd75"), ExtResource("10_lqdls"), ExtResource("11_43072"), ExtResource("12_pu5cq")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nokr4"]
+_data = {
+"activate": SubResource("Animation_g53gr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpqg5"]
+size = Vector2(24, 24)
+
+[node name="Checkponit" type="Node2D"]
+script = ExtResource("1_fa62n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Area2D")
+libraries = {
+"": SubResource("AnimationLibrary_nokr4")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_gg6qr")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_dpqg5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://cexeipgtbpfk4"]
+
+[ext_resource type="PackedScene" uid="uid://dmhirg2rksnb3" path="res://parallax_background.tscn" id="1_3o71e"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_3o71e")]
+
+[node name="VBox Botones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.696
+anchor_right = 0.5
+anchor_bottom = 0.696
+offset_left = -149.0
+offset_top = -101.008
+offset_right = 150.0
+offset_bottom = 14.992
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="JUGAR" type="Button" parent="VBox Botones"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.676008, 0.433211, 0.892814, 1)
+theme_override_colors/font_outline_color = Color(0.0675381, 0.305352, 1, 1)
+action_mode = 0
+text = "JUGAR "
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="SALIR" type="Button" parent="VBox Botones"]
+layout_mode = 2
+text = "SALIR"
+text_overrun_behavior = 1
+icon_alignment = 1
