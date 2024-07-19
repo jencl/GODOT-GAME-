@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
+var door = false
 var speed := 250
 signal scoreUP
 signal  playerDied
 @onready var animated_sprite_2d = $AnimatedSprite2D
+
+func _process(delta):
+	open_door()
 
 
 func _physics_process(delta):
@@ -35,5 +39,9 @@ func morirse():
 	$morirSonido.play()
 	animated_sprite_2d.play("hurt")
 	emit_signal("playerDied")
+	
+func open_door():
+	if door == true:
+		set_physics_process(false)
 
 

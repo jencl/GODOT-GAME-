@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://cubxwhy7pgsph"]
+
+[ext_resource type="Script" path="res://scripts/nivel_2.gd" id="1_2n8gk"]
+[ext_resource type="Texture2D" uid="uid://dhixdi0xx5ara" path="res://assets/Mondstadt Background Wallpaper/windrise-background-4k.png" id="1_iwnrr"]
+[ext_resource type="Script" path="res://scripts/DeathScreen.gd" id="2_w2var"]
+[ext_resource type="PackedScene" uid="uid://j7cnysrwhoes" path="res://scenas/player.tscn" id="2_xu4xl"]
+[ext_resource type="PackedScene" uid="uid://cqv1j87iccwhw" path="res://scenas/spawner.tscn" id="3_jfi28"]
+[ext_resource type="AudioStream" uid="uid://cnpvvr0u3pxxf" path="res://Sonidos/Música Inspirada En Caricaturas Antiguas.mp3" id="6_iwjjt"]
+[ext_resource type="PackedScene" uid="uid://d1l4v85p5nb05" path="res://scenas/cabezaaa.tscn" id="7_8s6fq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab7j5"]
+size = Vector2(1162, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgpv6"]
+size = Vector2(44, 661)
+
+[sub_resource type="LabelSettings" id="LabelSettings_laxq2"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_owt4h"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0v7f"]
+font_size = 40
+
+[node name="nivel2" type="Node2D"]
+script = ExtResource("1_2n8gk")
+
+[node name="Windrise-background-4k" type="Sprite2D" parent="."]
+position = Vector2(622, 266)
+scale = Vector2(0.565918, 0.550781)
+texture = ExtResource("1_iwnrr")
+
+[node name="player" parent="." instance=ExtResource("2_xu4xl")]
+
+[node name="cajas" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D"]
+position = Vector2(577, 589)
+shape = SubResource("RectangleShape2D_ab7j5")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D4"]
+position = Vector2(573, -60)
+shape = SubResource("RectangleShape2D_ab7j5")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D2"]
+position = Vector2(-18, 328)
+shape = SubResource("RectangleShape2D_pgpv6")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="cajas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D3"]
+position = Vector2(1171, 324)
+shape = SubResource("RectangleShape2D_pgpv6")
+
+[node name="DeathScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("2_w2var")
+
+[node name="MsgLabel" type="Label" parent="DeathScreen"]
+offset_left = 432.0
+offset_top = 159.0
+offset_right = 732.0
+offset_bottom = 228.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_laxq2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathScreen"]
+offset_left = 517.0
+offset_top = 231.0
+offset_right = 643.0
+offset_bottom = 280.0
+
+[node name="Label" type="Label" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_owt4h")
+
+[node name="FinalScore" type="Label" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_owt4h")
+
+[node name="Reinicio" type="Button" parent="DeathScreen"]
+offset_left = 378.0
+offset_top = 294.0
+offset_right = 505.0
+offset_bottom = 347.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "REINICIAR"
+
+[node name="Salir" type="Button" parent="DeathScreen"]
+offset_left = 651.0
+offset_top = 295.0
+offset_right = 778.0
+offset_bottom = 348.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "SALIR"
+
+[node name="spawner" parent="." instance=ExtResource("3_jfi28")]
+position = Vector2(1045, 131)
+
+[node name="spawner2" parent="." instance=ExtResource("3_jfi28")]
+position = Vector2(888, 136)
+
+[node name="spawner3" parent="." instance=ExtResource("3_jfi28")]
+position = Vector2(746, 139)
+
+[node name="spawner4" parent="." instance=ExtResource("3_jfi28")]
+position = Vector2(568, 138)
+
+[node name="spawner5" parent="." instance=ExtResource("3_jfi28")]
+position = Vector2(368, 138)
+
+[node name="spawner6" parent="." instance=ExtResource("3_jfi28")]
+position = Vector2(175, 141)
+
+[node name="score" type="Label" parent="."]
+offset_left = 575.0
+offset_top = 27.0
+offset_right = 645.0
+offset_bottom = 81.0
+text = "0"
+label_settings = SubResource("LabelSettings_f0v7f")
+
+[node name="juegoSonido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_iwjjt")
+volume_db = -5.0
+autoplay = true
+
+[node name="Area2D" parent="." instance=ExtResource("7_8s6fq")]
+position = Vector2(1064, 405)
+
+[connection signal="pressed" from="DeathScreen/Reinicio" to="DeathScreen" method="_on_reinicio_pressed"]
+[connection signal="pressed" from="DeathScreen/Salir" to="DeathScreen" method="_on_salir_pressed"]

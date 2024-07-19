@@ -78,7 +78,7 @@ process_mode = 3
 position = Vector2(169, 180)
 scale = Vector2(2.59921, 2.63889)
 sprite_frames = SubResource("SpriteFrames_wxmyn")
-animation = &"idle"
+animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(162, 179)

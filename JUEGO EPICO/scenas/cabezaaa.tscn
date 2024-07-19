@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1l4v85p5nb05"]
+
+[ext_resource type="Script" path="res://scripts/skull.gd" id="1_vsekt"]
+[ext_resource type="Texture2D" uid="uid://cn002pfiv38f6" path="res://assets/Golden Skull/01.png" id="2_iqubj"]
+[ext_resource type="Texture2D" uid="uid://di18yfurunl3o" path="res://assets/Golden Skull/02.png" id="3_28cu2"]
+[ext_resource type="Texture2D" uid="uid://ng4ocbp8rltv" path="res://assets/Golden Skull/03.png" id="4_3uryq"]
+[ext_resource type="Texture2D" uid="uid://b5lwrhjqp08um" path="res://assets/Golden Skull/04.png" id="5_pf5gg"]
+[ext_resource type="Texture2D" uid="uid://8preovc6ib3c" path="res://assets/Golden Skull/05.png" id="6_fug8f"]
+[ext_resource type="Texture2D" uid="uid://lph744xg1wlc" path="res://assets/Golden Skull/06.png" id="7_kaijc"]
+[ext_resource type="Texture2D" uid="uid://coj25kgw8511y" path="res://assets/Golden Skull/07.png" id="8_sui4g"]
+[ext_resource type="Texture2D" uid="uid://cj184avximbtv" path="res://assets/Golden Skull/08.png" id="9_3mdec"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lmxo3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iqubj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_28cu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3uryq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pf5gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pf5gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fug8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kaijc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sui4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3mdec")
+}],
+"loop": true,
+"name": &"skull",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gg15r"]
+radius = 52.5547
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_vsekt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(27.5, 36.5)
+scale = Vector2(3.29167, 3.60714)
+sprite_frames = SubResource("SpriteFrames_lmxo3")
+animation = &"skull"
+frame_progress = 0.00471213
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33, 50)
+shape = SubResource("CircleShape2D_gg15r")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

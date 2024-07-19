@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd18o04khkoa"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_dhx04"]
+[ext_resource type="Texture2D" uid="uid://cr2bdrbjtkk4k" path="res://Battleground3/Battleground3.png" id="2_xl7uc"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_dhx04")
+
+[node name="Battleground3" type="Sprite2D" parent="."]
+position = Vector2(528, 400)
+texture = ExtResource("2_xl7uc")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 464.0
+offset_top = 130.0
+offset_right = 598.0
+offset_bottom = 196.0
+text = "nivel 1 "
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 449.0
+offset_top = 265.0
+offset_right = 635.0
+offset_bottom = 345.0
+text = "nivel 2"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 414.0
+offset_top = 436.0
+offset_right = 675.0
+offset_bottom = 508.0
+text = "nivel 3"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

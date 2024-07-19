@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://57ey8wg06bt7"]
+[gd_scene load_steps=13 format=3 uid="uid://57ey8wg06bt7"]
 
 [ext_resource type="Texture2D" uid="uid://cr2bdrbjtkk4k" path="res://Battleground3/Battleground3.png" id="1_hpm4q"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_yrno5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cqv1j87iccwhw" path="res://scenas/spawner.tscn" id="3_rust4"]
 [ext_resource type="Script" path="res://scripts/DeathScreen.gd" id="5_d6gf6"]
 [ext_resource type="AudioStream" uid="uid://cnpvvr0u3pxxf" path="res://Sonidos/Música Inspirada En Caricaturas Antiguas.mp3" id="6_yofut"]
+[ext_resource type="PackedScene" uid="uid://d1l4v85p5nb05" path="res://scenas/cabezaaa.tscn" id="7_gspr4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rej8k"]
 size = Vector2(1162, 140)
@@ -134,8 +135,11 @@ position = Vector2(175, 141)
 
 [node name="juegoSonido" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_yofut")
-volume_db = -20.0
+volume_db = -5.0
 autoplay = true
+
+[node name="Area2D" parent="." instance=ExtResource("7_gspr4")]
+position = Vector2(1064, 405)
 
 [connection signal="pressed" from="DeathScreen/Reinicio" to="DeathScreen" method="_on_reinicio_pressed"]
 [connection signal="pressed" from="DeathScreen/Salir" to="DeathScreen" method="_on_salir_pressed"]
